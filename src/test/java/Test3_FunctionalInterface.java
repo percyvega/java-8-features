@@ -10,11 +10,11 @@ import java.util.List;
 @Log4j2
 class Test3_FunctionalInterface {
 
-    List<String> stringList;
+    private List<String> stringList;
 
     @BeforeEach
     void beforeEach() {
-        stringList = Arrays.asList("Abstract", "I", "Internationalization", "One", "Four");
+        stringList = Arrays.asList("Abstract", "I", "He", "She", "It", null, "Internationalization", "You", "One", "Three", "Four", "Five", "Six", "Seven");
     }
 
     @Test
@@ -24,9 +24,9 @@ class Test3_FunctionalInterface {
             public int compare(String s1, String s2) {
                 return Integer.compare(s1.length(), s2.length());
             }
-        };
+        }.reversed();
 
-        stringList.sort(comparator);
+        stringList.sort(Comparator.nullsLast(comparator));
 
         log.info(stringList);
     }
@@ -35,21 +35,27 @@ class Test3_FunctionalInterface {
     void lambda_1() {
         Comparator<String> comparator = (String s1, String s2) -> Integer.compare(s1.length(), s2.length());
 
-        stringList.sort(comparator);
+        stringList.sort(Comparator.nullsFirst(comparator.reversed()));
+
+        log.info(stringList);
     }
 
     @Test
     void lambda_2() {
         Comparator<String> comparator = (s1, s2) -> Integer.compare(s1.length(), s2.length());
 
-        stringList.sort(comparator);
+        stringList.sort(Comparator.nullsFirst(comparator));
+
+        log.info(stringList);
     }
 
     @Test
     void methodReference() {
-        Comparator<String> comparator = Comparator.comparingInt(String::length);
+        Comparator<String> comparator = Comparator.nullsLast(Comparator.comparingInt(String::length).thenComparingInt(String::hashCode));
 
         stringList.sort(comparator);
+
+        log.info(stringList);
     }
 
 }
