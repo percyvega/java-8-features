@@ -1,4 +1,4 @@
-package functionalinterface;
+package com.percyvega.java8.multipleinheritance;
 
 @FunctionalInterface
 public interface Employee {

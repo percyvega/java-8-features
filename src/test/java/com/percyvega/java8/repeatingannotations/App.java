@@ -1,8 +1,8 @@
-package repeatingannotations;
+package com.percyvega.java8.repeatingannotations;
 
 import org.junit.jupiter.api.Test;
 
-public class App {
+class App {
 
     @Test
     void testGetAnnotationsByType_when_one() {

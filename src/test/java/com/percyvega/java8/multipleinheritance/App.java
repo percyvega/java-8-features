@@ -1,4 +1,4 @@
-package functionalinterface;
+package com.percyvega.java8.multipleinheritance;
 
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;

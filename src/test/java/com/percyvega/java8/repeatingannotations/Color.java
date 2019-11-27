@@ -1,4 +1,4 @@
-package repeatingannotations;
+package com.percyvega.java8.repeatingannotations;
 
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;

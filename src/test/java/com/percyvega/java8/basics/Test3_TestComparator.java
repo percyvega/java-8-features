@@ -1,3 +1,5 @@
+package com.percyvega.java8.basics;
+
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,7 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Log4j2
-class Test3_FunctionalInterface {
+class Test3_TestComparator {
 
     private List<String> stringList;
 
