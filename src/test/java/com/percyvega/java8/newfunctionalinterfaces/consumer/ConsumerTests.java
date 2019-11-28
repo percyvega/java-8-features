@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import static com.percyvega.java8.Constants.FEMALE;
+import static com.percyvega.java8.Constants.MALE;
 
 @Log4j2
 class ConsumerTests {
@@ -18,6 +19,11 @@ class ConsumerTests {
     private static final Consumer<Student> logStudentActivitiesConsumer = student -> log.info(student::getActivities);
 
     private static final List<Student> students = StudentService.getAllStudents();
+
+    @Test
+    void logStudent() {
+        logStudentConsumer.accept(students.get(0));
+    }
 
     @Test
     void logStudents() {
@@ -37,6 +43,15 @@ class ConsumerTests {
     @Test
     void setLogStudentNamesAndActivities() {
         students.forEach(logStudentNameConsumer.andThen(logStudentActivitiesConsumer));
+    }
+
+    @Test
+    void setLogStudentNames_whenGenderMale() {
+        students.forEach(student -> {
+            if (MALE.equals(student.getGender())) {
+                logStudentNameConsumer.accept(student);
+            }
+        });
     }
 
     @Test
