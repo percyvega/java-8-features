@@ -1,5 +1,7 @@
 package com.percyvega.java8.newfunctionalinterfaces.predicate;
 
+import com.percyvega.java8.Student;
+import com.percyvega.java8.StudentService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
+import static com.percyvega.java8.Constants.MALE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
@@ -20,6 +23,10 @@ class PredicateTests {
     private static final Predicate<Integer> divisibleBy400Predicate = integer -> integer % 400 == 0;
 
     public static final Predicate<Integer> isLeapYear = divisibleBy4Predicate.and(divisibleBy100Predicate.negate()).or(divisibleBy400Predicate);
+
+    public static final Predicate<Student> gpaGt35MaleStudentPredicate = student -> MALE.equals(student.getGender()) && student.getGpa() >= 3.5;
+
+    private static final List<Student> students = StudentService.getAllStudents();
 
     @Test
     void divisibleBy4PredicateTest() {
@@ -48,6 +55,15 @@ class PredicateTests {
         });
         notLeapYears.forEach(integer -> {
             assertThat(isLeapYear.test(integer)).isFalse();
+        });
+    }
+
+    @Test
+    void gpa4MaleStudentPredicateTest() {
+        students.forEach(student -> {
+            if (gpaGt35MaleStudentPredicate.test(student)) {
+                log.info(student);
+            }
         });
     }
 
