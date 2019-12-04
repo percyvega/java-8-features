@@ -1,4 +1,4 @@
-package com.percyvega.java8.newfunctionalinterfaces.biconsumer;
+package com.percyvega.java8.newfunctionalinterfaces.consumer;
 
 import com.percyvega.java8.Student;
 import com.percyvega.java8.StudentService;
