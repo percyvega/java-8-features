@@ -25,6 +25,11 @@ public class FunctionTests {
 
     private static final List<Student> students = StudentService.getAllStudents();
 
+    public static final Function<List<Student>, Double> calculateAverageGpa = students1 -> {
+        return students1.stream().mapToDouble(Student::getGpa).average().getAsDouble();
+    };
+
+
     @Test
     void toUpperCase() {
         students.forEach(student -> {
@@ -51,4 +56,8 @@ public class FunctionTests {
         students.forEach(student -> log.info(surroundWithTwoSpaces.compose(replaceSpacesWithUnderscores).apply(student.getName())));
     }
 
+    @Test
+    void calculateAverageGpa() {
+        log.info(calculateAverageGpa.apply(students));
+    }
 }
