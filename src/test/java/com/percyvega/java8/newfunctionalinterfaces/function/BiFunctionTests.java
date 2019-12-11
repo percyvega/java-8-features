@@ -17,13 +17,13 @@ public class BiFunctionTests {
 
     private static final List<Student> students = StudentService.getAllStudents();
 
-    public static final BiFunction<List<Student>, Predicate<Student>, List<String>> getNamesOfStudents = (students, studentPredicate) -> {
-        return students.stream().filter(studentPredicate).map(Student::getName).collect(Collectors.toList());
+    public static final BiFunction<List<Student>, Predicate<Student>, List<Student>> getNamesOfStudents = (students, studentPredicate) -> {
+        return students.stream().filter(studentPredicate).collect(Collectors.toList());
     };
 
     @Test
     void getNamesOfStudentsTest() {
-        log.info(getNamesOfStudents.apply(students, gpaGt35MaleStudentPredicate));
+        getNamesOfStudents.apply(students, gpaGt35MaleStudentPredicate).forEach(log::info);
     }
 
 }
