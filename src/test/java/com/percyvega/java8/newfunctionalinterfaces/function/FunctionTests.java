@@ -29,7 +29,6 @@ public class FunctionTests {
         return students1.stream().mapToDouble(Student::getGpa).average().getAsDouble();
     };
 
-
     @Test
     void toUpperCase() {
         students.forEach(student -> {
