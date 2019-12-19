@@ -14,7 +14,7 @@ public class SupplierTests {
 
     private static final List<Student> students = StudentService.getAllStudents();
 
-    public static final Supplier randomStudentSupplier = () -> students.get(Math.abs(new Random().nextInt()) % students.size());
+    public static final Supplier<Student> randomStudentSupplier = () -> students.get(Math.abs(new Random().nextInt()) % students.size());
 
     @Test
     void test_supplier() {
