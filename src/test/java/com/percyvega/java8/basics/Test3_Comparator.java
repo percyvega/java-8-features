@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @Log4j2
-class Test3_TestComparator {
+class Test3_Comparator {
 
     private List<String> stringList;
 

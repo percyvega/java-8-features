@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-class Test1_SomeNewFeatures {
+class Test1_IntStreamAndStream {
 
     @Test
     void totalFirst100numbers() {

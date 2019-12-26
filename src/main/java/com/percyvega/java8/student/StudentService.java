@@ -1,11 +1,11 @@
-package com.percyvega.java8;
+package com.percyvega.java8.student;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.percyvega.java8.Constants.MALE;
-import static com.percyvega.java8.Constants.FEMALE;
+import static com.percyvega.java8.student.Constants.MALE;
+import static com.percyvega.java8.student.Constants.FEMALE;
 
 public class StudentService {
 

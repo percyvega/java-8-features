@@ -3,13 +3,8 @@ package com.percyvega.java8.basics;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
-//@FunctionalInterface
-interface PrintDemo {
-    void print(String s);
-}
-
 @Log4j2
-class Test2_SingleAbstractMethod {
+public class Test2_SingleAbstractMethod {
 
     @Test
     void nonFunctional() {

@@ -1,4 +1,4 @@
-package com.percyvega.java8.multipleinheritance;
+package com.percyvega.java8.interfacemultipleinheritance;
 
 @FunctionalInterface
 public interface Relative {

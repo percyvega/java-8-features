@@ -1,4 +1,4 @@
-package com.percyvega.java8;
+package com.percyvega.java8.student;
 
 import lombok.Data;
 

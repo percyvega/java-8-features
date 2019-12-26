@@ -1,7 +1,7 @@
 package com.percyvega.java8.newfunctionalinterfaces.predicate;
 
-import com.percyvega.java8.Student;
-import com.percyvega.java8.StudentService;
+import com.percyvega.java8.student.Student;
+import com.percyvega.java8.student.StudentService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static com.percyvega.java8.Constants.MALE;
+import static com.percyvega.java8.student.Constants.MALE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2

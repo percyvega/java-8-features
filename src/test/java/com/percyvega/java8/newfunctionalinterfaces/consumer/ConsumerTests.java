@@ -1,15 +1,15 @@
 package com.percyvega.java8.newfunctionalinterfaces.consumer;
 
-import com.percyvega.java8.Student;
-import com.percyvega.java8.StudentService;
+import com.percyvega.java8.student.Student;
+import com.percyvega.java8.student.StudentService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.function.Consumer;
 
-import static com.percyvega.java8.Constants.FEMALE;
-import static com.percyvega.java8.Constants.MALE;
+import static com.percyvega.java8.student.Constants.FEMALE;
+import static com.percyvega.java8.student.Constants.MALE;
 
 @Log4j2
 class ConsumerTests {

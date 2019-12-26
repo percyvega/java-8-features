@@ -1,7 +1,7 @@
 package com.percyvega.java8.newfunctionalinterfaces.function;
 
-import com.percyvega.java8.Student;
-import com.percyvega.java8.StudentService;
+import com.percyvega.java8.student.Student;
+import com.percyvega.java8.student.StudentService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
