@@ -4,11 +4,11 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 @Log4j2
-public class Test2_SingleAbstractMethod {
+public class SamInterfaceTest {
 
     @Test
     void nonFunctional() {
-        PrintDemo demo = new PrintDemo() {
+        SamInterface demo = new SamInterface() {
             @Override
             public void print(String s) {
                 log.info(s);
@@ -20,21 +20,21 @@ public class Test2_SingleAbstractMethod {
 
     @Test
     void lambda_1() {
-        PrintDemo demo = (String s) -> log.info(s);
+        SamInterface demo = (String s) -> log.info(s);
 
         demo.print("Hello!");
     }
 
     @Test
     void lambda_2() {
-        PrintDemo demo = (s) -> log.info(s);
+        SamInterface demo = (s) -> log.info(s);
 
         demo.print("Hello!");
     }
 
     @Test
     void methodReference() {
-        PrintDemo demo = log::info;
+        SamInterface demo = log::info;
 
         demo.print("Hello!");
     }
