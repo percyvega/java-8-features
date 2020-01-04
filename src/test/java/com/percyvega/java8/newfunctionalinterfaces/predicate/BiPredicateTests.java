@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.function.BiPredicate;
 
 import static com.percyvega.java8.student.Constants.MALE;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 class BiPredicateTests {

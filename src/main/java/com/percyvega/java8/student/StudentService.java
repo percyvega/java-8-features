@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.percyvega.java8.student.Constants.MALE;
 import static com.percyvega.java8.student.Constants.FEMALE;
+import static com.percyvega.java8.student.Constants.MALE;
 
 public class StudentService {
 

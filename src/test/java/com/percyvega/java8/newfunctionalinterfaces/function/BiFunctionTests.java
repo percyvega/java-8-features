@@ -17,9 +17,10 @@ public class BiFunctionTests {
 
     private static final List<Student> students = StudentService.getAllStudents();
 
-    public static final BiFunction<List<Student>, Predicate<Student>, List<Student>> getNamesOfStudents = (students, studentPredicate) -> {
-        return students.stream().filter(studentPredicate).collect(Collectors.toList());
-    };
+    public static final BiFunction<List<Student>, Predicate<Student>, List<Student>> getNamesOfStudents = (students, studentPredicate) ->
+            students.stream()
+                    .filter(studentPredicate)
+                    .collect(Collectors.toList());
 
     @Test
     void getNamesOfStudentsTest() {

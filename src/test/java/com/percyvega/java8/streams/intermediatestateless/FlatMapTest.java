@@ -1,4 +1,4 @@
-package com.percyvega.java8.streams;
+package com.percyvega.java8.streams.intermediatestateless;
 
 import com.percyvega.java8.student.Student;
 import com.percyvega.java8.student.StudentService;
@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.OptionalDouble;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Log4j2

@@ -1,4 +1,4 @@
-package com.percyvega.java8.streams;
+package com.percyvega.java8.streams.intermediatestateless;
 
 import com.percyvega.java8.student.StudentService;
 import lombok.extern.log4j.Log4j2;

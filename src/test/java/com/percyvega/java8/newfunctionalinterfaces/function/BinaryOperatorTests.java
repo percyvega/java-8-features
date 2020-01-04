@@ -25,8 +25,12 @@ public class BinaryOperatorTests {
 
     @Test
     void test_addTwoStudentLists() {
-        List<Student> maleStudents = students.stream().filter(student -> MALE.equals(student.getGender())).collect(Collectors.toList());
-        List<Student> femaleStudents = students.stream().filter(student -> FEMALE.equals(student.getGender())).collect(Collectors.toList());
+        List<Student> maleStudents = students.stream()
+                .filter(student -> MALE.equals(student.getGender()))
+                .collect(Collectors.toList());
+        List<Student> femaleStudents = students.stream()
+                .filter(student -> FEMALE.equals(student.getGender()))
+                .collect(Collectors.toList());
 
         List<Student> maleFemaleStudents = addTwoStudentLists.apply(maleStudents, femaleStudents);
 

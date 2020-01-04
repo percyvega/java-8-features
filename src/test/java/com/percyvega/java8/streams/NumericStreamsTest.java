@@ -3,11 +3,8 @@ package com.percyvega.java8.streams;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
-import java.util.function.Supplier;
 import java.util.stream.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,7 +29,7 @@ class NumericStreamsTest {
                 .sum()).isEqualTo(6);
 
         assertThat(IntStream.of(4)
-                .toArray()).isEqualTo(new int[] {4});
+                .toArray()).isEqualTo(new int[]{4});
 
         assertThat(IntStream.of(8, 23, 1979)
                 .sum()).isEqualTo(8 + 23 + 1979);
@@ -63,7 +60,7 @@ class NumericStreamsTest {
                 .sum()).isEqualTo(6);
 
         assertThat(LongStream.of(4)
-                .toArray()).isEqualTo(new long[] {4});
+                .toArray()).isEqualTo(new long[]{4});
 
         assertThat(LongStream.of(8, 23, 1979)
                 .sum()).isEqualTo(8L + 23L + 1979L);
@@ -89,7 +86,7 @@ class NumericStreamsTest {
                 .sum()).isEqualTo(7.5);
 
         assertThat(DoubleStream.of(4.5)
-                .toArray()).isEqualTo(new double[] {4.5});
+                .toArray()).isEqualTo(new double[]{4.5});
 
         assertThat(DoubleStream.of(8.5, 23.5, 1979.5)
                 .sum()).isEqualTo(8.5 + 23.5 + 1979.5);

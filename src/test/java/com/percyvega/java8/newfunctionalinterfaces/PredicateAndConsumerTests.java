@@ -11,7 +11,6 @@ import java.util.function.Predicate;
 
 import static com.percyvega.java8.student.Constants.FEMALE;
 import static com.percyvega.java8.student.Constants.MALE;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 class PredicateAndConsumerTests {

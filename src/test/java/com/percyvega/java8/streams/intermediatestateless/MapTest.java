@@ -1,4 +1,4 @@
-package com.percyvega.java8.streams;
+package com.percyvega.java8.streams.intermediatestateless;
 
 import com.percyvega.java8.student.Student;
 import com.percyvega.java8.student.StudentService;
