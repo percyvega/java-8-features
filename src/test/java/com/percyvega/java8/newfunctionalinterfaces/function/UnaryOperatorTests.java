@@ -16,11 +16,9 @@ public class UnaryOperatorTests {
             .filter(student -> student.getGpa() > 3.5)
             .collect(Collectors.toList());
 
-    private static final List<Student> students = StudentService.getAllStudents();
-
     @Test
     void test_studentsWithGpaGreaterThan35() {
-        studentsWithGpaGreaterThan35.apply(students).forEach(log::info);
+        studentsWithGpaGreaterThan35.apply(StudentService.getAllStudents()).forEach(log::info);
     }
 
 }

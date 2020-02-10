@@ -26,8 +26,6 @@ public class PredicateTests {
 
     public static final Predicate<Student> gpaGt35MaleStudentPredicate = student -> MALE.equals(student.getGender()) && student.getGpa() >= 3.5;
 
-    private static final List<Student> students = StudentService.getAllStudents();
-
     @Test
     void divisibleBy4PredicateTest() {
         assertThat(divisibleBy4Predicate.test(4)).isTrue();
@@ -60,7 +58,7 @@ public class PredicateTests {
 
     @Test
     void gpa4MaleStudentPredicateTest() {
-        students.forEach(student -> {
+        StudentService.getAllStudents().forEach(student -> {
             if (gpaGt35MaleStudentPredicate.test(student)) {
                 log.info(student);
             }

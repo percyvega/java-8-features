@@ -23,15 +23,13 @@ public class FunctionTests {
     public static final Function<String, String> replaceSpacesWithUnderscores = s -> s.replace(" ", "_");
     public static final Function<String, String> surroundWithTwoSpaces = s -> "  " + s + "  ";
 
-    private static final List<Student> students = StudentService.getAllStudents();
-
     public static final Function<List<Student>, Double> calculateAverageGpa = students1 -> {
         return students1.stream().mapToDouble(Student::getGpa).average().getAsDouble();
     };
 
     @Test
     void toUpperCase() {
-        students.forEach(student -> {
+        StudentService.getAllStudents().forEach(student -> {
             String s = upperCaseFunction1.apply(student.getName()) + ", " +
                     upperCaseFunction2.apply(student.getName()) + ", " +
                     upperCaseFunction3.apply(student.getName());
@@ -42,21 +40,21 @@ public class FunctionTests {
 
     @Test
     void toUpperCase_then_replaceSpacesWithUnderscore() {
-        students.forEach(student -> log.info(upperCaseFunction3.andThen(replaceSpacesWithUnderscores).apply(student.getName())));
+        StudentService.getAllStudents().forEach(student -> log.info(upperCaseFunction3.andThen(replaceSpacesWithUnderscores).apply(student.getName())));
     }
 
     @Test
     void surroundWithTwoSpaces_then_replaceSpacesWithUnderscore() {
-        students.forEach(student -> log.info(surroundWithTwoSpaces.andThen(replaceSpacesWithUnderscores).apply(student.getName())));
+        StudentService.getAllStudents().forEach(student -> log.info(surroundWithTwoSpaces.andThen(replaceSpacesWithUnderscores).apply(student.getName())));
     }
 
     @Test
     void replaceSpacesWithUnderscore_then_surroundWithTwoSpaces() {
-        students.forEach(student -> log.info(surroundWithTwoSpaces.compose(replaceSpacesWithUnderscores).apply(student.getName())));
+        StudentService.getAllStudents().forEach(student -> log.info(surroundWithTwoSpaces.compose(replaceSpacesWithUnderscores).apply(student.getName())));
     }
 
     @Test
     void calculateAverageGpa() {
-        log.info(calculateAverageGpa.apply(students));
+        log.info(calculateAverageGpa.apply(StudentService.getAllStudents()));
     }
 }

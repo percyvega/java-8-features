@@ -21,20 +21,18 @@ public class BinaryOperatorTests {
         return students1;
     };
 
-    private static final List<Student> students = StudentService.getAllStudents();
-
     @Test
     void test_addTwoStudentLists() {
-        List<Student> maleStudents = students.stream()
+        List<Student> maleStudents = StudentService.getAllStudents().stream()
                 .filter(student -> MALE.equals(student.getGender()))
                 .collect(Collectors.toList());
-        List<Student> femaleStudents = students.stream()
+        List<Student> femaleStudents = StudentService.getAllStudents().stream()
                 .filter(student -> FEMALE.equals(student.getGender()))
                 .collect(Collectors.toList());
 
         List<Student> maleFemaleStudents = addTwoStudentLists.apply(maleStudents, femaleStudents);
 
-        assertThat(students.size()).isEqualTo(maleFemaleStudents.size());
+        assertThat(StudentService.getAllStudents().size()).isEqualTo(maleFemaleStudents.size());
     }
 
 }

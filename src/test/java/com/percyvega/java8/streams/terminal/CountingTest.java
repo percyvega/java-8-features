@@ -13,11 +13,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Log4j2
 public class CountingTest {
 
-    List<Student> allStudents = StudentService.getAllStudents();
-
     @Test
-    void count() {
-        long count = allStudents.stream()
+    void count_without_collect() {
+        long count = StudentService.getAllStudents().stream()
                 .map(Student::getActivities)
                 .flatMap(List::stream)
                 .distinct()
@@ -28,7 +26,7 @@ public class CountingTest {
 
     @Test
     void counting() {
-        Long counting = allStudents.stream()
+        Long counting = StudentService.getAllStudents().stream()
                 .map(Student::getActivities)
                 .flatMap(List::stream)
                 .distinct()

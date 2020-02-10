@@ -5,7 +5,6 @@ import com.percyvega.java8.student.StudentService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -27,16 +26,14 @@ class PredicateAndConsumerTests {
         }
     };
 
-    private static final List<Student> students = StudentService.getAllStudents();
-
     @Test
     void test1() {
-        students.forEach(compositeConsumer);
+        StudentService.getAllStudents().forEach(compositeConsumer);
     }
 
     @Test
     void test2() {
-        students.stream()
+        StudentService.getAllStudents().stream()
                 .filter(gpaGt35MaleStudentPredicate.or(gpaLt35FemaleStudentPredicate))
                 .forEach(logStudentNameConsumer.andThen(logStudentGpaConsumer));
     }

@@ -15,16 +15,14 @@ import static com.percyvega.java8.newfunctionalinterfaces.predicate.PredicateTes
 @Log4j2
 public class BiFunctionTests {
 
-    private static final List<Student> students = StudentService.getAllStudents();
-
     public static final BiFunction<List<Student>, Predicate<Student>, List<Student>> getNamesOfStudents = (students, studentPredicate) ->
-            students.stream()
+            StudentService.getAllStudents().stream()
                     .filter(studentPredicate)
                     .collect(Collectors.toList());
 
     @Test
     void getNamesOfStudentsTest() {
-        getNamesOfStudents.apply(students, gpaGt35MaleStudentPredicate).forEach(log::info);
+        getNamesOfStudents.apply(StudentService.getAllStudents(), gpaGt35MaleStudentPredicate).forEach(log::info);
     }
 
 }
