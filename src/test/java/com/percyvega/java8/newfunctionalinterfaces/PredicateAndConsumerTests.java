@@ -1,7 +1,7 @@
 package com.percyvega.java8.newfunctionalinterfaces;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -28,12 +28,12 @@ class PredicateAndConsumerTests {
 
     @Test
     void test1() {
-        StudentService.getAllStudents().forEach(compositeConsumer);
+        StudentsListSupplier.get().forEach(compositeConsumer);
     }
 
     @Test
     void test2() {
-        StudentService.getAllStudents().stream()
+        StudentsListSupplier.get().stream()
                 .filter(gpaGt35MaleStudentPredicate.or(gpaLt35FemaleStudentPredicate))
                 .forEach(logStudentNameConsumer.andThen(logStudentGpaConsumer));
     }

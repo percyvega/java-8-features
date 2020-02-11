@@ -1,7 +1,7 @@
 package com.percyvega.java8.basics;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -65,7 +65,7 @@ class ComparatorTest {
     void comparator_reversed() {
         Comparator<Student> studentComparator = Comparator.comparingDouble(Student::getGpa).thenComparingDouble(Student::getGradeLevel).reversed();
 
-        StudentService.getAllStudents().stream()
+        StudentsListSupplier.get().stream()
                 .sorted(studentComparator)
                 .forEach(student -> log.info(student.getGpa() + ", " + student.getGradeLevel() + ", " + student.getName()));
     }

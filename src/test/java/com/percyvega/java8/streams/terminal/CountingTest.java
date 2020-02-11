@@ -1,7 +1,7 @@
 package com.percyvega.java8.streams.terminal;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,7 @@ public class CountingTest {
 
     @Test
     void count_without_collect() {
-        long count = StudentService.getAllStudents().stream()
+        long count = StudentsListSupplier.get().stream()
                 .map(Student::getActivities)
                 .flatMap(List::stream)
                 .distinct()
@@ -26,7 +26,7 @@ public class CountingTest {
 
     @Test
     void counting() {
-        Long counting = StudentService.getAllStudents().stream()
+        Long counting = StudentsListSupplier.get().stream()
                 .map(Student::getActivities)
                 .flatMap(List::stream)
                 .distinct()

@@ -1,7 +1,7 @@
 package com.percyvega.java8.newfunctionalinterfaces.predicate;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -58,7 +58,7 @@ public class PredicateTests {
 
     @Test
     void gpa4MaleStudentPredicateTest() {
-        StudentService.getAllStudents().forEach(student -> {
+        StudentsListSupplier.get().forEach(student -> {
             if (gpaGt35MaleStudentPredicate.test(student)) {
                 log.info(student);
             }

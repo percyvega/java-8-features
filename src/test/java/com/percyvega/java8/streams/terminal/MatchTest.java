@@ -1,6 +1,6 @@
 package com.percyvega.java8.streams.terminal;
 
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -11,21 +11,21 @@ public class MatchTest {
 
     @Test
     void allMatch() {
-        boolean allMatch = StudentService.getAllStudents().stream()
+        boolean allMatch = StudentsListSupplier.get().stream()
                 .allMatch(student -> student.getNoteBooks() >= 10);
         assertThat(allMatch).isTrue();
     }
 
     @Test
     void anyMatch() {
-        boolean anyMatch = StudentService.getAllStudents().stream()
+        boolean anyMatch = StudentsListSupplier.get().stream()
                 .anyMatch(student -> student.getGpa() == 4.0);
         assertThat(anyMatch).isTrue();
     }
 
     @Test
     void noneMatch() {
-        boolean noneMatch = StudentService.getAllStudents().stream()
+        boolean noneMatch = StudentsListSupplier.get().stream()
                 .noneMatch(student -> student.getName().length() < 9);
         assertThat(noneMatch).isTrue();
     }

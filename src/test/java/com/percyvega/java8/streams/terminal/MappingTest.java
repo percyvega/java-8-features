@@ -1,7 +1,7 @@
 package com.percyvega.java8.streams.terminal;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ public class MappingTest {
 
     @Test
     void toList_without_collect_mapping() {
-        List<String> collect = StudentService.getAllStudents().stream()
+        List<String> collect = StudentsListSupplier.get().stream()
                 .map(Student::getName)
                 .collect(Collectors.toList());
 
@@ -25,7 +25,7 @@ public class MappingTest {
 
     @Test
     void toList_with_collect_mapping() {
-        List<String> collect = StudentService.getAllStudents().stream()
+        List<String> collect = StudentsListSupplier.get().stream()
                 .collect(Collectors.mapping(Student::getName, Collectors.toList()));
 
         assertThat(collect.size()).isEqualTo(15);
@@ -33,7 +33,7 @@ public class MappingTest {
 
     @Test
     void toSet_without_collect_mapping() {
-        Set<String> collect = StudentService.getAllStudents().stream()
+        Set<String> collect = StudentsListSupplier.get().stream()
                 .map(Student::getName)
                 .collect(Collectors.toSet());
 
@@ -42,7 +42,7 @@ public class MappingTest {
 
     @Test
     void toSet_with_collect_mapping() {
-        Set<String> collect = StudentService.getAllStudents().stream()
+        Set<String> collect = StudentsListSupplier.get().stream()
                 .collect(Collectors.mapping(Student::getName, Collectors.toSet()));
 
         assertThat(collect.size()).isEqualTo(15);

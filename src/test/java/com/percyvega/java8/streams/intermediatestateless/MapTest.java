@@ -1,7 +1,7 @@
 package com.percyvega.java8.streams.intermediatestateless;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,7 @@ public class MapTest {
 
     @Test
     void test_map_toList() {
-        List<String> namesList = StudentService.getAllStudents().stream()
+        List<String> namesList = StudentsListSupplier.get().stream()
                 .map(Student::getName)
                 .map(String::toUpperCase)
                 .collect(Collectors.toList());
@@ -25,7 +25,7 @@ public class MapTest {
 
     @Test
     void test_mapToDouble_toSet() {
-        Set<Double> namesSet = StudentService.getAllStudents().stream()
+        Set<Double> namesSet = StudentsListSupplier.get().stream()
                 .mapToDouble(Student::getGpa)
                 .boxed()
                 .collect(Collectors.toSet());
@@ -35,7 +35,7 @@ public class MapTest {
 
     @Test
     void test_mapToInt_sum() {
-        int noteBooksCount = StudentService.getAllStudents().stream()
+        int noteBooksCount = StudentsListSupplier.get().stream()
                 .mapToInt(Student::getNoteBooks)
                 .sum();
 
@@ -44,7 +44,7 @@ public class MapTest {
 
     @Test
     void test_mapToInt_average() {
-        OptionalDouble average = StudentService.getAllStudents().stream()
+        OptionalDouble average = StudentsListSupplier.get().stream()
                 .mapToInt(Student::getGradeLevel)
                 .average();
 

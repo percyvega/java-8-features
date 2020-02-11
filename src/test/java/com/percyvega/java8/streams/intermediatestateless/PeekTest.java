@@ -1,6 +1,6 @@
 package com.percyvega.java8.streams.intermediatestateless;
 
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ public class PeekTest {
 
     @Test
     void test_peek() {
-        StudentService.getAllStudents().stream()
+        StudentsListSupplier.get().stream()
                 .peek(student -> log.info("Peek #1: {}", student.getName()))
                 .filter(student -> student.getGradeLevel() >= 3)
                 .peek(student -> log.info("Peek #2: {}, Grade Level: {}", student.getName(), student.getGradeLevel()))

@@ -1,6 +1,6 @@
 package com.percyvega.java8.newfunctionalinterfaces.consumer;
 
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +31,7 @@ class BiConsumerTests {
 
     @Test
     void logStudentNameAndActivities() {
-        StudentService.getAllStudents().forEach(student -> logStudentNameAndActivities.accept(student.getName(), student.getActivities()));
+        StudentsListSupplier.get().forEach(student -> logStudentNameAndActivities.accept(student.getName(), student.getActivities()));
     }
 
 }

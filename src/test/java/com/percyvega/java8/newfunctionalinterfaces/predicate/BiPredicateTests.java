@@ -1,6 +1,6 @@
 package com.percyvega.java8.newfunctionalinterfaces.predicate;
 
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,7 @@ class BiPredicateTests {
 
     @Test
     void gpa4MaleStudentPredicateTest() {
-        StudentService.getAllStudents().forEach(student -> {
+        StudentsListSupplier.get().forEach(student -> {
             if (gpaGt35MaleStudentBiPredicate.test(student.getGender(), student.getGpa())) {
                 log.info(student);
             }

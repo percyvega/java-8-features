@@ -1,7 +1,7 @@
 package com.percyvega.java8.newfunctionalinterfaces.function;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +29,7 @@ public class FunctionTests {
 
     @Test
     void toUpperCase() {
-        StudentService.getAllStudents().forEach(student -> {
+        StudentsListSupplier.get().forEach(student -> {
             String s = upperCaseFunction1.apply(student.getName()) + ", " +
                     upperCaseFunction2.apply(student.getName()) + ", " +
                     upperCaseFunction3.apply(student.getName());
@@ -40,21 +40,21 @@ public class FunctionTests {
 
     @Test
     void toUpperCase_then_replaceSpacesWithUnderscore() {
-        StudentService.getAllStudents().forEach(student -> log.info(upperCaseFunction3.andThen(replaceSpacesWithUnderscores).apply(student.getName())));
+        StudentsListSupplier.get().forEach(student -> log.info(upperCaseFunction3.andThen(replaceSpacesWithUnderscores).apply(student.getName())));
     }
 
     @Test
     void surroundWithTwoSpaces_then_replaceSpacesWithUnderscore() {
-        StudentService.getAllStudents().forEach(student -> log.info(surroundWithTwoSpaces.andThen(replaceSpacesWithUnderscores).apply(student.getName())));
+        StudentsListSupplier.get().forEach(student -> log.info(surroundWithTwoSpaces.andThen(replaceSpacesWithUnderscores).apply(student.getName())));
     }
 
     @Test
     void replaceSpacesWithUnderscore_then_surroundWithTwoSpaces() {
-        StudentService.getAllStudents().forEach(student -> log.info(surroundWithTwoSpaces.compose(replaceSpacesWithUnderscores).apply(student.getName())));
+        StudentsListSupplier.get().forEach(student -> log.info(surroundWithTwoSpaces.compose(replaceSpacesWithUnderscores).apply(student.getName())));
     }
 
     @Test
     void calculateAverageGpa() {
-        log.info(calculateAverageGpa.apply(StudentService.getAllStudents()));
+        log.info(calculateAverageGpa.apply(StudentsListSupplier.get()));
     }
 }

@@ -1,7 +1,7 @@
 package com.percyvega.java8.newfunctionalinterfaces.supplier;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 @Log4j2
 public class SupplierTests {
 
-    public static final Supplier<Student> randomStudentSupplier = () -> StudentService.getAllStudents().get(Math.abs(new Random().nextInt()) % StudentService.getAllStudents().size());
+    public static final Supplier<Student> randomStudentSupplier = () -> StudentsListSupplier.get().get(Math.abs(new Random().nextInt()) % StudentsListSupplier.get().size());
 
     @Test
     void test_supplier() {

@@ -1,12 +1,11 @@
 package com.percyvega.java8.streams.terminal;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -17,7 +16,7 @@ public class MinByAndMaxByTest {
 
     @Test
     void min_without_collect() {
-        Optional<Double> optionalDouble = StudentService.getAllStudents().stream()
+        Optional<Double> optionalDouble = StudentsListSupplier.get().stream()
                 .map(Student::getGpa)
                 .min(Double::compare);
 
@@ -26,7 +25,7 @@ public class MinByAndMaxByTest {
 
     @Test
     void minBy() {
-        Optional<Student> optionalStudent = StudentService.getAllStudents().stream()
+        Optional<Student> optionalStudent = StudentsListSupplier.get().stream()
                 .collect(Collectors.minBy(Comparator.comparing(Student::getGpa)));
 
         assertThat(optionalStudent.get().getName()).isEqualTo("Ben Affleck");
@@ -34,7 +33,7 @@ public class MinByAndMaxByTest {
 
     @Test
     void max_without_collect() {
-        Optional<Double> optionalDouble = StudentService.getAllStudents().stream()
+        Optional<Double> optionalDouble = StudentsListSupplier.get().stream()
                 .map(Student::getGpa)
                 .max(Double::compare);
 
@@ -43,7 +42,7 @@ public class MinByAndMaxByTest {
 
     @Test
     void maxBy() {
-        Optional<Student> optionalStudent = StudentService.getAllStudents().stream()
+        Optional<Student> optionalStudent = StudentsListSupplier.get().stream()
                 .collect(Collectors.maxBy(Comparator.comparing(Student::getGpa)));
 
         assertThat(optionalStudent.get().getName()).isEqualTo("Emma Thompson");

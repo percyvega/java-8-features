@@ -1,7 +1,7 @@
 package com.percyvega.java8.newfunctionalinterfaces.function;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -23,16 +23,16 @@ public class BinaryOperatorTests {
 
     @Test
     void test_addTwoStudentLists() {
-        List<Student> maleStudents = StudentService.getAllStudents().stream()
+        List<Student> maleStudents = StudentsListSupplier.get().stream()
                 .filter(student -> MALE.equals(student.getGender()))
                 .collect(Collectors.toList());
-        List<Student> femaleStudents = StudentService.getAllStudents().stream()
+        List<Student> femaleStudents = StudentsListSupplier.get().stream()
                 .filter(student -> FEMALE.equals(student.getGender()))
                 .collect(Collectors.toList());
 
         List<Student> maleFemaleStudents = addTwoStudentLists.apply(maleStudents, femaleStudents);
 
-        assertThat(StudentService.getAllStudents().size()).isEqualTo(maleFemaleStudents.size());
+        assertThat(StudentsListSupplier.get().size()).isEqualTo(maleFemaleStudents.size());
     }
 
 }

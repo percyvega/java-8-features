@@ -1,7 +1,7 @@
 package com.percyvega.java8.newfunctionalinterfaces.consumer;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -19,32 +19,32 @@ class ConsumerTests {
 
     @Test
     void logStudent() {
-        logStudentConsumer.accept(StudentService.getAllStudents().get(0));
+        logStudentConsumer.accept(StudentsListSupplier.get().get(0));
     }
 
     @Test
     void logStudents() {
-        StudentService.getAllStudents().forEach(logStudentConsumer);
+        StudentsListSupplier.get().forEach(logStudentConsumer);
     }
 
     @Test
     void logStudentNames() {
-        StudentService.getAllStudents().forEach(logStudentNameConsumer);
+        StudentsListSupplier.get().forEach(logStudentNameConsumer);
     }
 
     @Test
     void logStudentActivities() {
-        StudentService.getAllStudents().forEach(logStudentActivitiesConsumer);
+        StudentsListSupplier.get().forEach(logStudentActivitiesConsumer);
     }
 
     @Test
     void setLogStudentNamesAndActivities() {
-        StudentService.getAllStudents().forEach(logStudentNameConsumer.andThen(logStudentActivitiesConsumer));
+        StudentsListSupplier.get().forEach(logStudentNameConsumer.andThen(logStudentActivitiesConsumer));
     }
 
     @Test
     void setLogStudentNames_whenGenderMale() {
-        StudentService.getAllStudents().forEach(student -> {
+        StudentsListSupplier.get().forEach(student -> {
             if (MALE.equals(student.getGender())) {
                 logStudentNameConsumer.accept(student);
             }
@@ -53,7 +53,7 @@ class ConsumerTests {
 
     @Test
     void setLogStudentNamesAndActivities_whenGenderFemale() {
-        StudentService.getAllStudents().forEach(student -> {
+        StudentsListSupplier.get().forEach(student -> {
             if (FEMALE.equals(student.getGender())) {
                 logStudentNameConsumer.andThen(logStudentActivitiesConsumer).accept(student);
             }

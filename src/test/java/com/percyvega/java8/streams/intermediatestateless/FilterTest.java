@@ -1,7 +1,7 @@
 package com.percyvega.java8.streams.intermediatestateless;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ public class FilterTest {
 
     @Test
     void test_filter() {
-        Map<String, List<String>> studentNameAndActivities = StudentService.getAllStudents().stream()
+        Map<String, List<String>> studentNameAndActivities = StudentsListSupplier.get().stream()
                 .filter(student -> student.getGradeLevel() >= 3)
                 .filter(student -> student.getGpa() >= 3.5)
                 .filter(student -> MALE.equals(student.getGender()))

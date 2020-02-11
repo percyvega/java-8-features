@@ -7,9 +7,9 @@ import java.util.List;
 import static com.percyvega.java8.student.Constants.FEMALE;
 import static com.percyvega.java8.student.Constants.MALE;
 
-public class StudentService {
+public class StudentsListSupplier {
 
-    public static List<Student> getAllStudents() {
+    public static List<Student> get() {
         List<Student> students = new ArrayList<>();
 
         students.add(new Student("Matt Damon", 2, 3.6, MALE, 10, Arrays.asList("dancing", "basketball", "volleyball")));

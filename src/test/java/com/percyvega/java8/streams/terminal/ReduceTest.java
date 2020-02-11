@@ -1,7 +1,7 @@
 package com.percyvega.java8.streams.terminal;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -47,7 +47,7 @@ public class ReduceTest {
 
     @Test
     void map_reduce() {
-        Optional<Integer> resultOptional = StudentService.getAllStudents().stream()
+        Optional<Integer> resultOptional = StudentsListSupplier.get().stream()
                 .map(Student::getNoteBooks)
                 .reduce(Integer::sum);
         assertThat(resultOptional.get()).isEqualTo(189);

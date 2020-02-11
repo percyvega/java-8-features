@@ -1,7 +1,7 @@
 package com.percyvega.java8.streams.intermediatestateless;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +14,7 @@ public class FlatMapTest {
 
     @Test
     void test_map_flatMap_toList() {
-        List<String> activities = StudentService.getAllStudents().stream()
+        List<String> activities = StudentsListSupplier.get().stream()
                 .map(Student::getActivities)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
@@ -24,7 +24,7 @@ public class FlatMapTest {
 
     @Test
     void test_map_flatMap_distinct_toList() {
-        List<String> activities = StudentService.getAllStudents().stream()
+        List<String> activities = StudentsListSupplier.get().stream()
                 .map(Student::getActivities)
                 .flatMap(List::stream)
                 .distinct()
@@ -35,7 +35,7 @@ public class FlatMapTest {
 
     @Test
     void test_map_flatMap_distinct_sorted_toList() {
-        List<String> activities = StudentService.getAllStudents().stream()
+        List<String> activities = StudentsListSupplier.get().stream()
                 .map(Student::getActivities)
                 .flatMap(List::stream)
                 .distinct()
@@ -47,12 +47,12 @@ public class FlatMapTest {
 
     @Test
     void test_map_mapToLong_sum_distinct_count() {
-        long beforeDistinctCount = StudentService.getAllStudents().stream()
+        long beforeDistinctCount = StudentsListSupplier.get().stream()
                 .map(Student::getActivities)
                 .mapToLong(List::size)
                 .sum();
 
-        long afterDistinctCount = StudentService.getAllStudents().stream()
+        long afterDistinctCount = StudentsListSupplier.get().stream()
                 .map(Student::getActivities)
                 .flatMap(List::stream)
                 .distinct()

@@ -1,7 +1,7 @@
 package com.percyvega.java8.newfunctionalinterfaces.function;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentService;
+import com.percyvega.java8.student.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -16,13 +16,13 @@ import static com.percyvega.java8.newfunctionalinterfaces.predicate.PredicateTes
 public class BiFunctionTests {
 
     public static final BiFunction<List<Student>, Predicate<Student>, List<Student>> getNamesOfStudents = (students, studentPredicate) ->
-            StudentService.getAllStudents().stream()
+            StudentsListSupplier.get().stream()
                     .filter(studentPredicate)
                     .collect(Collectors.toList());
 
     @Test
     void getNamesOfStudentsTest() {
-        getNamesOfStudents.apply(StudentService.getAllStudents(), gpaGt35MaleStudentPredicate).forEach(log::info);
+        getNamesOfStudents.apply(StudentsListSupplier.get(), gpaGt35MaleStudentPredicate).forEach(log::info);
     }
 
 }
