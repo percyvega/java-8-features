@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Optional;
 
 @Data
 @AllArgsConstructor
@@ -14,6 +15,7 @@ public class Student {
     private String gender;
     private int noteBooks;
     private List<String> activities;
+    private Optional<Student> spouse;
 
     public Student() {
     }
