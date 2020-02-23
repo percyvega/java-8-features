@@ -1,15 +1,17 @@
 package com.percyvega.java8.streams.terminal;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentsListSupplier;
+import com.percyvega.java8.student.suppliers.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Log4j2
-public class PartitioningBy {
+public class PartitioningByTest {
 
     @Test
     void partitioningBy1() {

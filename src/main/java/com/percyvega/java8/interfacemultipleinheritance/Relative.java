@@ -9,8 +9,4 @@ public interface Relative {
         return "Father";
     }
 
-    default String getSalute(String addressee) {
-        return "Hola " + addressee + "!";
-    }
-
 }

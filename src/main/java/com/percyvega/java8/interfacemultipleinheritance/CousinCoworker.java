@@ -13,9 +13,8 @@ public class CousinCoworker implements Relative, Employee {
         return Relative.super.getRole() + "/" + Employee.super.getRole();
     }
 
-    @Override
     public String getSalute(String addressee) {
-        return Employee.super.getSalute(addressee);
+        return Employee.getSalute(addressee);
     }
 
 }

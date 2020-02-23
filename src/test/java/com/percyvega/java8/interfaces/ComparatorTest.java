@@ -1,7 +1,7 @@
-package com.percyvega.java8.basics;
+package com.percyvega.java8.interfaces;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentsListSupplier;
+import com.percyvega.java8.student.suppliers.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

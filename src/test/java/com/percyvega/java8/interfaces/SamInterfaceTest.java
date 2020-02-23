@@ -1,4 +1,4 @@
-package com.percyvega.java8.basics;
+package com.percyvega.java8.interfaces;
 
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;

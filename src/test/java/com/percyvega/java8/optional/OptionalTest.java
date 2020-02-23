@@ -1,6 +1,6 @@
 package com.percyvega.java8.optional;
 
-import com.percyvega.java8.student.OptionalStudentSupplier;
+import com.percyvega.java8.student.suppliers.OptionalStudentSupplier;
 import com.percyvega.java8.student.Student;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;

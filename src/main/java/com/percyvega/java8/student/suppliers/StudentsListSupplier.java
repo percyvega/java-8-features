@@ -1,4 +1,6 @@
-package com.percyvega.java8.student;
+package com.percyvega.java8.student.suppliers;
+
+import com.percyvega.java8.student.Student;
 
 import java.util.ArrayList;
 import java.util.Arrays;

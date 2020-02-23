@@ -1,7 +1,7 @@
 package com.percyvega.java8.streams.terminal;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.StudentsListSupplier;
+import com.percyvega.java8.student.suppliers.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.Test;

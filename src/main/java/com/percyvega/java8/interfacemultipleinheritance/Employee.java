@@ -9,7 +9,7 @@ public interface Employee {
         return "Manager";
     }
 
-    default String getSalute(String addressee) {
+    static String getSalute(String addressee) {
         return "Good morning, " + addressee;
     }
 
