@@ -1,7 +1,7 @@
 package com.percyvega.java8.optional;
 
-import com.percyvega.java8.student.suppliers.OptionalStudentSupplier;
 import com.percyvega.java8.student.Student;
+import com.percyvega.java8.student.suppliers.OptionalStudentSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -68,7 +68,7 @@ public class OptionalTest {
             Optional<Student> o = OptionalStudentSupplier.get();
             o.ifPresent(log::info);
 
-            if(!o.isPresent()) {
+            if (!o.isPresent()) {
                 log.info("-");
             }
         }

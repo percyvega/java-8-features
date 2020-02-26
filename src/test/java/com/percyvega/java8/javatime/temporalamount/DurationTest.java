@@ -4,14 +4,13 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class DurationTests {
+public class DurationTest {
 
     @Test
     void test0() {

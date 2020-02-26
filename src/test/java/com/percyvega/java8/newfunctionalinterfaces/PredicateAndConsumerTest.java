@@ -12,7 +12,7 @@ import static com.percyvega.java8.student.Constants.FEMALE;
 import static com.percyvega.java8.student.Constants.MALE;
 
 @Log4j2
-class PredicateAndConsumerTests {
+class PredicateAndConsumerTest {
 
     private static final Consumer<Student> logStudentNameConsumer = student -> log.info(student::getName);
     private static final Consumer<Student> logStudentGpaConsumer = student -> log.info(student::getGpa);

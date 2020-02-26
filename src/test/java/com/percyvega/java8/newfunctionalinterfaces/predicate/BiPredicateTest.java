@@ -9,7 +9,7 @@ import java.util.function.BiPredicate;
 import static com.percyvega.java8.student.Constants.MALE;
 
 @Log4j2
-class BiPredicateTests {
+class BiPredicateTest {
 
     public static final BiPredicate<String, Double> gpaGt35MaleStudentBiPredicate = (gender, gpa) -> MALE.equals(gender) && gpa >= 3.5;
 

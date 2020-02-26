@@ -5,14 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class InstantTests {
+public class InstantTest {
 
     @Test
     void test0() {

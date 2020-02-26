@@ -9,7 +9,7 @@ import java.time.Period;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class PeriodTests {
+public class PeriodTest {
 
     @Test
     void test0() {
@@ -52,13 +52,13 @@ public class PeriodTests {
 
         assertThat(period.getYears()).isEqualTo(2);
         assertThat(period.getMonths()).isEqualTo(2);
-        assertThat(period.getDays()).isEqualTo(6);
+//        assertThat(period.getDays()).isEqualTo(6); // we can't be sure of this because number of days change from month to month
 
         Period period1 = Period.between(aWeekFromNow, today);
 
         assertThat(period1.getYears()).isEqualTo(-2);
         assertThat(period1.getMonths()).isEqualTo(-2);
-        assertThat(period1.getDays()).isEqualTo(-6);
+//        assertThat(period1.getDays()).isEqualTo(-6); // we can't be sure of this because number of days change from month to month
     }
 
     @Test

@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-class JavaTimeConversionsTests {
+class JavaTimeConversionsTest {
 
     LocalTime localTime = LocalTime.now();
     LocalDate localDate = LocalDate.now();

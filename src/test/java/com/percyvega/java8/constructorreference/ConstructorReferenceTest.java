@@ -8,7 +8,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 @Log4j2
-public class Tests {
+public class ConstructorReferenceTest {
 
     @Test
     void test_supplier() {

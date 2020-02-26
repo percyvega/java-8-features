@@ -13,7 +13,7 @@ import static com.percyvega.java8.student.Constants.MALE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class PredicateTests {
+public class PredicateTest {
 
     private static final List<Integer> leapYears = Arrays.asList(1596, 1600, 2000, 2400);
     private static final List<Integer> notLeapYears = Arrays.asList(1697, 1698, 1699, 1700, 1800, 1900, 2100, 2200, 2300);

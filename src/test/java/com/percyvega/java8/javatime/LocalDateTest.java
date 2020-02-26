@@ -7,13 +7,14 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.ZoneId;
-import java.time.chrono.ChronoLocalDate;
-import java.time.temporal.*;
+import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-class LocalDateTests {
+class LocalDateTest {
 
     @Test
     void test1() {

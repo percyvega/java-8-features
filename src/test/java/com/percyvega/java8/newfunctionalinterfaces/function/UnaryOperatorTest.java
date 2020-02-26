@@ -10,7 +10,7 @@ import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 @Log4j2
-public class UnaryOperatorTests {
+public class UnaryOperatorTest {
 
     public static final UnaryOperator<List<Student>> studentsWithGpaGreaterThan35 = studentList -> studentList.stream()
             .filter(student -> student.getGpa() > 3.5)

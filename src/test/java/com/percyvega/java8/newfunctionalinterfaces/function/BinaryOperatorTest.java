@@ -14,7 +14,7 @@ import static com.percyvega.java8.student.Constants.MALE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class BinaryOperatorTests {
+public class BinaryOperatorTest {
 
     public static final BinaryOperator<List<Student>> addTwoStudentLists = (students1, students2) -> {
         students1.addAll(students2);

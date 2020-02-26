@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 @Log4j2
-public class SupplierTests {
+public class SupplierTest {
 
     public static final Supplier<Student> randomStudentSupplier = () -> StudentsListSupplier.get().get(Math.abs(new Random().nextInt()) % StudentsListSupplier.get().size());
 

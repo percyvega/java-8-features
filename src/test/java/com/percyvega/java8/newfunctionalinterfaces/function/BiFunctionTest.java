@@ -10,10 +10,10 @@ import java.util.function.BiFunction;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static com.percyvega.java8.newfunctionalinterfaces.predicate.PredicateTests.gpaGt35MaleStudentPredicate;
+import static com.percyvega.java8.newfunctionalinterfaces.predicate.PredicateTest.gpaGt35MaleStudentPredicate;
 
 @Log4j2
-public class BiFunctionTests {
+public class BiFunctionTest {
 
     public static final BiFunction<List<Student>, Predicate<Student>, List<Student>> getNamesOfStudents = (students, studentPredicate) ->
             StudentsListSupplier.get().stream()

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 @Log4j2
-class BiConsumerTests {
+class BiConsumerTest {
 
     private static final BiConsumer<Integer, Integer> logBothIntegers = (a, b) -> log.info(a + ", " + b);
     private static final BiConsumer<String, List<String>> logStudentNameAndActivities = (a, b) -> log.info(a + ", " + b);

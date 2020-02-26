@@ -7,7 +7,7 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoField;
 
 @Log4j2
-class LocalTimeTests {
+class LocalTimeTest {
 
     @Test
     void test1() {

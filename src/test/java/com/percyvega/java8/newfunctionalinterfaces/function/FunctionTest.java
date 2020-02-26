@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.function.Function;
 
 @Log4j2
-public class FunctionTests {
+public class FunctionTest {
 
     public static final Function<String, String> upperCaseFunction1 = new Function<String, String>() {
         @Override

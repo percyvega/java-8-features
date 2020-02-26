@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @Log4j2
 public class ParallelStreamTest {
 

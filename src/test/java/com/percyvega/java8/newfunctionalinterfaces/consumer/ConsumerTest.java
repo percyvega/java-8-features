@@ -11,7 +11,7 @@ import static com.percyvega.java8.student.Constants.FEMALE;
 import static com.percyvega.java8.student.Constants.MALE;
 
 @Log4j2
-class ConsumerTests {
+class ConsumerTest {
 
     private static final Consumer<Student> logStudentConsumer = log::info;
     private static final Consumer<Student> logStudentNameConsumer = student -> log.info(student::getName);
