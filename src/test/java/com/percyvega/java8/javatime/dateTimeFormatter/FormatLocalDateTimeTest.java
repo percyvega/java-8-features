@@ -48,7 +48,7 @@ public class FormatLocalDateTimeTest {
         String localDateTimeString2 = "2020-Aug-23|14|42|59";
         DateTimeFormatter dateTimeFormatter2 = DateTimeFormatter.ofPattern("yyyy-LLL-dd'|'HH|mm|ss");
         LocalDateTime localDateTime3 = LocalDateTime.parse(localDateTimeString2, dateTimeFormatter2);
-        assertThat(localDateTime3.toString()).isEqualTo("2020-03-01T14:42:59");
+        assertThat(localDateTime3.toString()).isEqualTo("2020-08-23T14:42:59");
     }
 
     @Test
