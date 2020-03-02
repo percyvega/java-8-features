@@ -1,4 +1,4 @@
-package com.percyvega.java8.javatime;
+package com.percyvega.java8.javatime.dateTimeFormatter;
 
 import org.junit.jupiter.api.Test;
 
