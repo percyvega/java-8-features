@@ -3,7 +3,6 @@ package com.percyvega.java8.interfaces;
 import com.percyvega.java8.student.Student;
 import com.percyvega.java8.student.suppliers.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -13,60 +12,28 @@ import java.util.List;
 @Log4j2
 class ComparatorTest {
 
-    private static List<String> stringList;
+    private static List<String> stringList = Arrays.asList("She", "It", "I", "He", null, "Abstract", "Internationalization", "Four", "Seven");
 
-    @BeforeAll
-    static void beforeAll() {
-        stringList = Arrays.asList("Abstract", "I", "He", "She", "It", null, "Internationalization", "You", "One", "Three", "Four", "Five", "Six", "Seven");
-    }
+    Comparator<String> comparatorComparingLength = Comparator.comparingInt(String::length);
+    Comparator<String> comparatorNullsLastComparingLengthComparingHashcode = Comparator.nullsLast(Comparator.comparingInt(String::length).thenComparingInt(String::hashCode));
+    Comparator<Student> comparatorComparingGpaComparingGradeReversed = Comparator.comparingDouble(Student::getGpa).thenComparingDouble(Student::getGradeLevel).reversed();
 
     @Test
-    void nonFunctional() {
-        Comparator<String> comparator = new Comparator<String>() {
-            @Override
-            public int compare(String s1, String s2) {
-                return Integer.compare(s1.length(), s2.length());
-            }
-        }.reversed();
-
-        stringList.sort(Comparator.nullsLast(comparator));
-
+    void listSort() {
+        stringList.sort(Comparator.nullsFirst(comparatorComparingLength));
         log.info(stringList);
-    }
 
-    @Test
-    void lambda_1() {
-        Comparator<String> comparator = (String s1, String s2) -> Integer.compare(s1.length(), s2.length());
-
-        stringList.sort(Comparator.nullsFirst(comparator.reversed()));
-
+        stringList.sort(Comparator.nullsFirst(comparatorComparingLength.reversed()));
         log.info(stringList);
-    }
 
-    @Test
-    void lambda_2() {
-        Comparator<String> comparator = (s1, s2) -> Integer.compare(s1.length(), s2.length());
-
-        stringList.sort(Comparator.nullsFirst(comparator));
-
-        log.info(stringList);
-    }
-
-    @Test
-    void methodReference() {
-        Comparator<String> comparator = Comparator.nullsLast(Comparator.comparingInt(String::length).thenComparingInt(String::hashCode));
-
-        stringList.sort(comparator);
-
+        stringList.sort(comparatorNullsLastComparingLengthComparingHashcode);
         log.info(stringList);
     }
 
     @Test
     void comparator_reversed() {
-        Comparator<Student> studentComparator = Comparator.comparingDouble(Student::getGpa).thenComparingDouble(Student::getGradeLevel).reversed();
-
         StudentsListSupplier.get().stream()
-                .sorted(studentComparator)
+                .sorted(comparatorComparingGpaComparingGradeReversed)
                 .forEach(student -> log.info(student.getGpa() + ", " + student.getGradeLevel() + ", " + student.getName()));
     }
 

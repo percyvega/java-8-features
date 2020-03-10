@@ -33,6 +33,13 @@ public class SamInterfaceTest {
     }
 
     @Test
+    void lambda_3() {
+        SamInterface demo = s -> log.info(s);
+
+        demo.print("Hello!");
+    }
+
+    @Test
     void methodReference() {
         SamInterface demo = log::info;
 
