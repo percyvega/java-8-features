@@ -13,6 +13,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class OptionalTest {
 
     @Test
+    void test() {
+        final String PERCY = "Percy";
+
+        Optional<String> optional = Optional.of(PERCY);
+
+        assertThat(optional.isPresent()).isTrue();
+        assertThat(optional.get()).isEqualTo(PERCY);
+        assertThat(optional.orElse("fallback")).isEqualTo(PERCY);
+
+        optional.ifPresent(s -> assertThat(s.charAt(0)).isEqualTo('P'));
+    }
+
+    @Test
     void optional() {
         for (int i = 0; i < 20; i++) {
             Optional<Student> o = OptionalStudentSupplier.get();
