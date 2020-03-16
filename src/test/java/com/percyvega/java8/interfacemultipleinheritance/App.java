@@ -3,6 +3,8 @@ package com.percyvega.java8.interfacemultipleinheritance;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Log4j2
 class App {
 
@@ -10,9 +12,9 @@ class App {
     void testFunctionalInterface() {
         CousinCoworker cousinCoworker = new CousinCoworker();
 
-        log.info(cousinCoworker.getName());
-        log.info(cousinCoworker.getRole());
-        log.info(cousinCoworker.getSalute("Percy"));
+        assertThat(cousinCoworker.getName()).isEqualTo("Percy Vega");
+        assertThat(cousinCoworker.getRole()).isEqualTo("Father/Manager");
+        assertThat(cousinCoworker.getSalute("Percy")).isEqualTo("Good morning, Percy");
     }
 
 }
