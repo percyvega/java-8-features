@@ -53,7 +53,7 @@ public class MapTest {
             assertThat(value).isEqualTo("Percy");
             return value;
         });
-        assertThat(entered2).isFalse();
+        assertThat(entered2).isTrue();
     }
 
     @Test

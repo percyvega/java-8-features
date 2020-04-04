@@ -1,8 +1,8 @@
-package com.percyvega.java8.interfaces;
+package com.percyvega.java8.interfaces.model;
 
 // The @FunctionalInterface annotation only helps to check (at compile time) if this interface contains a
-//      Single Abstract Method or not.
+//      Single Abstract Method (SAM) or not.
 @FunctionalInterface
 public interface SamInterface {
-    void print(String s);
+    String doSomething(String s);
 }

@@ -8,11 +8,14 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 class ComparatorTest {
 
-    private static List<String> stringList = Arrays.asList("She", "It", "I", "He", null, "Abstract", "Internationalization", "Four", "Seven");
+    private static List<String> stringList = Arrays.asList("She", "It", "I", "He", "A", null, "Abstract", "Internationalization", "Four", "Seven");
 
     Comparator<String> comparatorComparingLength = Comparator.comparingInt(String::length);
     Comparator<String> comparatorNullsLastComparingLengthComparingHashcode = Comparator.nullsLast(Comparator.comparingInt(String::length).thenComparingInt(String::hashCode));
@@ -21,20 +24,29 @@ class ComparatorTest {
     @Test
     void listSort() {
         stringList.sort(Comparator.nullsFirst(comparatorComparingLength));
-        log.info(stringList);
+        assertThat(stringList.get(0)).isNull();
+        assertThat(stringList.get(1)).isEqualTo("I");
 
         stringList.sort(Comparator.nullsFirst(comparatorComparingLength.reversed()));
-        log.info(stringList);
+        assertThat(stringList.get(0)).isNull();
+        assertThat(stringList.get(1)).isEqualTo("Internationalization");
 
         stringList.sort(comparatorNullsLastComparingLengthComparingHashcode);
-        log.info(stringList);
+        assertThat(stringList.get(0)).isEqualTo("A");
+        assertThat(stringList.get(stringList.size() - 1)).isNull();
     }
 
     @Test
     void comparator_reversed() {
-        StudentsListSupplier.get().stream()
+        List<Student> studentList = StudentsListSupplier.get().stream()
                 .sorted(comparatorComparingGpaComparingGradeReversed)
-                .forEach(student -> log.info(student.getGpa() + ", " + student.getGradeLevel() + ", " + student.getName()));
+                .collect(Collectors.toList());
+
+        Student student = studentList.get(0);
+
+        assertThat(student.getGpa()).isEqualTo(4.0);
+        assertThat(student.getGradeLevel()).isEqualTo(3);
+        assertThat(student.getName()).isEqualTo("Emma Thompson");
     }
 
 }

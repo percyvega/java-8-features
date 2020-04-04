@@ -1,5 +1,6 @@
 package com.percyvega.java8.interfacemultipleinheritance;
 
+import com.percyvega.java8.interfacemultipleinheritance.model.CousinCoworker;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 

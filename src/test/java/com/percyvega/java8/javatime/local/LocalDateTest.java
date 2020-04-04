@@ -17,13 +17,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LocalDateTest {
 
     @Test
-    void test1() {
+    void localDateIsImmutable() {
         LocalDate now = LocalDate.now();
         String nowString = now.toString();
-        now.plus(2, ChronoUnit.DAYS);
-        String nowAfterPlus2DaysString = now.toString();
 
-        assertThat(nowString).isEqualTo(nowAfterPlus2DaysString);
+        now.plus(2, ChronoUnit.DAYS);
+        LocalDate now2 = LocalDate.from(now);
+        String now2String = now2.toString();
+
+        LocalDate nowPlus2Days = now.plus(2, ChronoUnit.DAYS);
+        String nowPlus2DaysString = nowPlus2Days.toString();
+
+        assertThat(now).isEqualTo(now2);
+        assertThat(nowString).isEqualTo(now2String);
+        assertThat(now).isNotEqualTo(nowPlus2Days);
+        assertThat(nowString).isNotEqualTo(nowPlus2DaysString);
     }
 
     @Test
@@ -37,48 +45,45 @@ class LocalDateTest {
 
     @Test
     void test3() {
-        log.info(LocalDate.of(1979, 8, 23));
-        log.info(LocalDate.of(1986, Month.JANUARY, 19));
+        assertThat(LocalDate.of(1979, 8, 23).toString()).isEqualTo("1979-08-23");
+        assertThat(LocalDate.of(1986, Month.JANUARY, 19).toString()).isEqualTo("1986-01-19");
     }
 
     @Test
     void test4() {
-        LocalDate localDate = LocalDate.ofYearDay(1979, 365);
-        log.info(localDate);
-        log.info(localDate.getEra());
-        log.info(localDate.getChronology());
-        log.info(localDate.getDayOfWeek());
-        log.info(localDate.get(ChronoField.DAY_OF_WEEK));
+        LocalDate localDate = LocalDate.ofYearDay(1979, 235);
+        assertThat(localDate.toString()).isEqualTo("1979-08-23");
+        assertThat(localDate.getEra().toString()).isEqualTo("CE");
+        assertThat(localDate.getChronology().toString()).isEqualTo("ISO");
+        assertThat(localDate.getDayOfWeek().toString()).isEqualTo("THURSDAY");
+        assertThat(localDate.get(ChronoField.DAY_OF_WEEK)).isEqualTo(4);
     }
 
     @Test
     void test5() {
-        LocalDate localDate = LocalDate.now();
-        log.info(localDate);
+        LocalDate localDate = LocalDate.of(1979, 8, 23);
+        assertThat(localDate.toString()).isEqualTo("1979-08-23");
 
-        log.info(localDate.plusDays(-1));
-        log.info(localDate.minusWeeks(1));
-        log.info(localDate.minusMonths(1));
-        log.info(localDate.plusYears(-1));
+        assertThat(localDate.plusDays(-1).toString()).isEqualTo("1979-08-22");
+        assertThat(localDate.minusWeeks(1).toString()).isEqualTo("1979-08-16");
+        assertThat(localDate.minusMonths(1).toString()).isEqualTo("1979-07-23");
+        assertThat(localDate.plusYears(-1).toString()).isEqualTo("1978-08-23");
 
-        log.info(localDate.withYear(1979));
-        log.info(localDate.with(ChronoField.DAY_OF_MONTH, 1));
-        log.info(localDate.with(TemporalAdjusters.firstDayOfNextMonth()));
+        assertThat(localDate.withYear(2020).toString()).isEqualTo("2020-08-23");
+        assertThat(localDate.with(ChronoField.DAY_OF_MONTH, 1).toString()).isEqualTo("1979-08-01");
+        assertThat(localDate.with(TemporalAdjusters.firstDayOfNextMonth()).toString()).isEqualTo("1979-09-01");
 
-        log.info(localDate.plus(3, ChronoUnit.DAYS));
+        assertThat(localDate.plus(3, ChronoUnit.DAYS).toString()).isEqualTo("1979-08-26");
     }
 
     @Test
     void test6() {
-        LocalDate today = LocalDate.now();
-        LocalDate yesterday = LocalDate.now().minusDays(1);
+        LocalDate today = LocalDate.of(1979, 8, 23);
+        LocalDate yesterday = today.minusDays(1);
 
-        log.info(today);
-        log.info(yesterday);
-
-        log.info(today.isEqual(yesterday));
-        log.info(today.isBefore(yesterday));
-        log.info(today.isAfter(yesterday));
+        assertThat(today.isEqual(yesterday)).isFalse();
+        assertThat(today.isBefore(yesterday)).isFalse();
+        assertThat(today.isAfter(yesterday)).isTrue();
     }
 
 }

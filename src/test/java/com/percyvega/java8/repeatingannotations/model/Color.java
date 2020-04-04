@@ -1,4 +1,4 @@
-package com.percyvega.java8.repeatingannotations;
+package com.percyvega.java8.repeatingannotations.model;
 
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
@@ -8,6 +8,6 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 // to enable the repeated use of this annotation
 @Repeatable(Colors.class)
-@interface Color {
+public @interface Color {
     String name();
 }

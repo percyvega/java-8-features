@@ -1,9 +1,11 @@
 package com.percyvega.java8.javatime.temporalamount;
 
 import lombok.extern.log4j.Log4j2;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
@@ -28,14 +30,26 @@ public class DurationTest {
         assertThat(duration3.toMinutes()).isEqualTo(10);
     }
 
+    @Tag("This test will fail when there are less than 12 minutes until midnight")
     @Test
-    void test1() {
-        LocalTime localTime = LocalTime.now();
-        LocalTime localTime1 = localTime.plusMinutes(120);
+    void durationBetweenTwoLocalTimes() {
+        LocalTime localTime1 = LocalTime.now();
+        LocalTime localTime2 = localTime1.plusMinutes(12);
 
-        Duration duration = Duration.between(localTime, localTime1);
+        Duration duration1 = Duration.between(localTime1, localTime2);
+        Duration duration2 = Duration.between(localTime2, localTime1);
 
-        assertThat(duration.toMinutes()).isEqualTo(2 * 60);
+        assertThat(duration1.toMinutes()).isEqualTo(12);
+        assertThat(duration2.toMinutes()).isEqualTo(-12);
     }
 
+    @Test
+    void durationBetweenTwoInstants() {
+        Instant now1 = Instant.parse("1979-08-23T08:37:52.123456789Z");
+        Instant now2 = Instant.parse("1979-08-23T08:37:52.12Z");
+
+        Duration duration = Duration.between(now2, now1);
+        assertThat(duration.toMillis()).isEqualTo(3);
+        assertThat(duration.toNanos()).isEqualTo(3456789);
+    }
 }

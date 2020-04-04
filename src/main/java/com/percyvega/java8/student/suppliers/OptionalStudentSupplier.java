@@ -34,7 +34,7 @@ public class OptionalStudentSupplier {
         int studentsCount = students.size();
         int randomInt = random.nextInt(2 * studentsCount);
 
-        if(randomInt < studentsCount) {
+        if (randomInt < studentsCount) {
             return students.get(randomInt);
         } else {
             return null;

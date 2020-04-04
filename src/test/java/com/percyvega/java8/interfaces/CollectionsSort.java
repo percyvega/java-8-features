@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Log4j2
 public class CollectionsSort {
 
@@ -16,35 +18,35 @@ public class CollectionsSort {
     @Test
     void test1() {
         Collections.sort(names);
-        log.info(names);
+        assertThat(names.get(0)).isEqualTo("Abstract");
 
         Collections.sort(names, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
-                return o1.length() < o2.length() ? -1 : 1;
+                return o1.length() - o2.length();
             }
         });
-        log.info(names);
+        assertThat(names.get(0)).isEqualTo("I");
 
         Collections.sort(names, (String o1, String o2) -> {
-            return o1.length() > o2.length() ? -1 : 1;
+            return o2.length() - o1.length();
         });
-        log.info(names);
+        assertThat(names.get(0)).isEqualTo("Internationalization");
 
-        Collections.sort(names, (String o1, String o2) -> o1.length() < o2.length() ? -1 : 1);
-        log.info(names);
+        Collections.sort(names, (String o1, String o2) -> o1.length() - o2.length());
+        assertThat(names.get(0)).isEqualTo("I");
 
-        Collections.sort(names, (o1, o2) -> o1.length() > o2.length() ? -1 : 1);
-        log.info(names);
+        Collections.sort(names, (o1, o2) -> o1.length() - o2.length());
+        assertThat(names.get(0)).isEqualTo("I");
 
         Collections.sort(names, (o1, o2) -> Integer.compare(o1.length(), o2.length()));
-        log.info(names);
+        assertThat(names.get(0)).isEqualTo("I");
 
         Collections.sort(names, Comparator.comparingInt(String::length));
-        log.info(names);
+        assertThat(names.get(0)).isEqualTo("I");
 
         names.sort(Comparator.comparingInt(String::length));
-        log.info(names);
+        assertThat(names.get(0)).isEqualTo("I");
     }
 
 }

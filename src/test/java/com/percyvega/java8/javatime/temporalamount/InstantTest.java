@@ -3,7 +3,6 @@ package com.percyvega.java8.javatime.temporalamount;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
-import java.time.Duration;
 import java.time.Instant;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,10 +16,10 @@ public class InstantTest {
         log.info(now);
 
         Instant min = Instant.MIN;
-        log.info(min);
+        assertThat(min.toString()).isEqualTo("-1000000000-01-01T00:00:00Z");
 
         Instant max = Instant.MAX;
-        log.info(max);
+        assertThat(max.toString()).isEqualTo("+1000000000-12-31T23:59:59.999999999Z");
     }
 
     @Test
@@ -33,16 +32,6 @@ public class InstantTest {
 
         Instant instant2 = Instant.parse("1979-08-23T08:37:52.1234Z");
         assertThat(instant2.toString()).isEqualTo("1979-08-23T08:37:52.123400Z");
-    }
-
-    @Test
-    void test2() {
-        Instant now = Instant.now();
-        Instant now1 = Instant.now();
-
-        Duration duration = Duration.between(now, now1);
-        log.info(duration.toMillis());
-        log.info(duration.toNanos());
     }
 
 }

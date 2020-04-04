@@ -1,10 +1,10 @@
-package com.percyvega.java8.repeatingannotations;
+package com.percyvega.java8.repeatingannotations.model;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 // to get the annotation information at runtime
 @Retention(RetentionPolicy.RUNTIME)
-@interface Colors {
+public @interface Colors {
     Color[] value();
 }

@@ -1,49 +1,52 @@
 package com.percyvega.java8.interfaces;
 
+import com.percyvega.java8.interfaces.model.SamInterface;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 public class SamInterfaceTest {
 
     @Test
     void nonFunctional() {
-        SamInterface demo = new SamInterface() {
+        SamInterface samInterface = new SamInterface() {
             @Override
-            public void print(String s) {
-                log.info(s);
+            public String doSomething(String s) {
+                return s.toUpperCase();
             }
         };
 
-        demo.print("Hello!");
+        assertThat(samInterface.doSomething("Hello!")).isEqualTo("HELLO!");
     }
 
     @Test
     void lambda_1() {
-        SamInterface demo = (String s) -> log.info(s);
+        SamInterface samInterface = (String s) -> s.toLowerCase();
 
-        demo.print("Hello!");
+        assertThat(samInterface.doSomething("Hello!")).isEqualTo("hello!");
     }
 
     @Test
     void lambda_2() {
-        SamInterface demo = (s) -> log.info(s);
+        SamInterface samInterface = (s) -> String.valueOf(s.length());
 
-        demo.print("Hello!");
+        assertThat(samInterface.doSomething("Hello!")).isEqualTo("6");
     }
 
     @Test
     void lambda_3() {
-        SamInterface demo = s -> log.info(s);
+        SamInterface samInterface = s -> String.valueOf(s.length());
 
-        demo.print("Hello!");
+        assertThat(samInterface.doSomething("Hello!")).isEqualTo("6");
     }
 
     @Test
     void methodReference() {
-        SamInterface demo = log::info;
+        SamInterface samInterface = String::toLowerCase;
 
-        demo.print("Hello!");
+        assertThat(samInterface.doSomething("Hello!")).isEqualTo("hello!");
     }
 
 }

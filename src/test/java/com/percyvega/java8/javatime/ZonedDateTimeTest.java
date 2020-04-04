@@ -4,11 +4,13 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 import java.time.*;
+import java.util.Date;
+import java.util.TimeZone;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class TimezonesTest {
+public class ZonedDateTimeTest {
 
     @Test
     void zonedDateTimeTest() {
@@ -66,10 +68,13 @@ public class TimezonesTest {
 
     @Test
     void offsetDateTimeTest() {
-        ZonedDateTime zonedDateTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
+        ZoneId nyZone = ZoneId.of("America/New_York");
+        boolean inDaylightTime = TimeZone.getTimeZone(nyZone).inDaylightTime(new Date());
+
+        ZonedDateTime zonedDateTime = ZonedDateTime.now(nyZone);
 
         LocalDateTime now = zonedDateTime.toLocalDateTime();
-        OffsetDateTime offsetDateTime = now.atOffset(ZoneOffset.ofHours(-5));
+        OffsetDateTime offsetDateTime = now.atOffset(ZoneOffset.ofHours(inDaylightTime ? -4 : -5));
 
         assertThat(offsetDateTime.toString()).isEqualTo(zonedDateTime.toLocalDateTime().toString() + zonedDateTime.getOffset());
     }

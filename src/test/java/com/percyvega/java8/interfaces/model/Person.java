@@ -1,4 +1,4 @@
-package com.percyvega.java8.interfaces;
+package com.percyvega.java8.interfaces.model;
 
 public class Person implements DefaultMethodInterfacePerson {
 

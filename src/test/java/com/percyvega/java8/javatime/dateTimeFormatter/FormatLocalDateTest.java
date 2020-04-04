@@ -20,22 +20,10 @@ public class FormatLocalDateTest {
         LocalDate localDate3 = LocalDate.parse("2020-12-31", DateTimeFormatter.ISO_LOCAL_DATE);
         assertThat(localDate3.toString()).isEqualTo("2020-12-31");
 
-        LocalDate localDate = LocalDate.parse("20201231", DateTimeFormatter.BASIC_ISO_DATE);
-        assertThat(localDate.format(DateTimeFormatter.BASIC_ISO_DATE)).isEqualTo("20201231");
-        assertThat(localDate.toString()).isEqualTo("2020-12-31");
-    }
+        assertThat(localDate3.format(DateTimeFormatter.BASIC_ISO_DATE)).isEqualTo("20201231");
 
-    @Test
-    void localDate_parse_using_ofPattern() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("LLL d, yyyy");
-
-        LocalDate localDate1 = LocalDate.parse("May 6, 2020", dateTimeFormatter);
-        assertThat(localDate1.toString()).isEqualTo("2020-05-06");
-        assertThat(localDate1.format(dateTimeFormatter)).isEqualTo("May 6, 2020");
-
-        LocalDate localDate2 = LocalDate.parse("Dec 25, 2020", dateTimeFormatter);
-        assertThat(localDate2.toString()).isEqualTo("2020-12-25");
-        assertThat(localDate2.format(dateTimeFormatter)).isEqualTo("Dec 25, 2020");
+        LocalDate localDate4 = LocalDate.parse("20201231", DateTimeFormatter.BASIC_ISO_DATE);
+        assertThat(localDate4.toString()).isEqualTo("2020-12-31");
     }
 
     @Test
