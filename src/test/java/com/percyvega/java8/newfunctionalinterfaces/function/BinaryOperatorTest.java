@@ -32,7 +32,7 @@ public class BinaryOperatorTest {
 
         List<Student> maleFemaleStudents = addTwoStudentLists.apply(maleStudents, femaleStudents);
 
-        assertThat(StudentsListSupplier.get().size()).isEqualTo(maleFemaleStudents.size());
+        assertThat(maleFemaleStudents.size()).isEqualTo(StudentsListSupplier.get().size());
     }
 
 }

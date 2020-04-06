@@ -3,10 +3,13 @@ package com.percyvega.java8.newfunctionalinterfaces.function;
 import com.percyvega.java8.student.Student;
 import com.percyvega.java8.student.suppliers.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
+import org.assertj.core.data.Offset;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.function.Function;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 public class FunctionTest {
@@ -24,7 +27,10 @@ public class FunctionTest {
     public static final Function<String, String> surroundWithTwoSpaces = s -> "  " + s + "  ";
 
     public static final Function<List<Student>, Double> calculateAverageGpa = students1 -> {
-        return students1.stream().mapToDouble(Student::getGpa).average().getAsDouble();
+        return students1.stream()
+                .mapToDouble(Student::getGpa)
+                .average()
+                .getAsDouble();
     };
 
     @Test
@@ -55,6 +61,6 @@ public class FunctionTest {
 
     @Test
     void calculateAverageGpa() {
-        log.info(calculateAverageGpa.apply(StudentsListSupplier.get()));
+        assertThat(calculateAverageGpa.apply(StudentsListSupplier.get())).isCloseTo(3.586, Offset.offset(.001));
     }
 }

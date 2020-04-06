@@ -11,6 +11,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static com.percyvega.java8.newfunctionalinterfaces.predicate.PredicateTest.gpaGt35MaleStudentPredicate;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 public class BiFunctionTest {
@@ -22,7 +23,8 @@ public class BiFunctionTest {
 
     @Test
     void getNamesOfStudentsTest() {
-        getNamesOfStudents.apply(StudentsListSupplier.get(), gpaGt35MaleStudentPredicate).forEach(log::info);
+        List<Student> studentList = getNamesOfStudents.apply(StudentsListSupplier.get(), gpaGt35MaleStudentPredicate);
+        assertThat(studentList.size()).isEqualTo(6);
     }
 
 }

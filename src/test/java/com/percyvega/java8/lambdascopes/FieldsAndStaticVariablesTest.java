@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.function.Function;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Log4j2
 public class FieldsAndStaticVariablesTest {
 
@@ -12,16 +14,17 @@ public class FieldsAndStaticVariablesTest {
     int outerNum;
 
     @Test
-    void lambdaScopesTest1() {
-        Function<Integer, String> stringConverter1 = (from) -> {
-            outerNum = 23;
-            return String.valueOf(from);
-        };
+    void lambdaScopesTest() {
+        // int outerNum = 10; // when using a local variable modifying it inside the lambda won't compile.
+        // It has to be effectively final, or a member variable or static.
+        outerNum = 10;
+        outerStaticNum = 20;
+        Function<Integer, String> stringConverter1 = i -> String.valueOf(i + ++outerNum + ++outerStaticNum);
 
-        Function<Integer, String> stringConverter2 = (from) -> {
-            outerStaticNum = 72;
-            return String.valueOf(from);
-        };
+        outerNum = 30;
+        outerStaticNum = 60;
+
+        assertThat(stringConverter1.apply(10)).isEqualTo("102");
     }
 
 }

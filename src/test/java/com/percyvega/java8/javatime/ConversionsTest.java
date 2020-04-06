@@ -63,7 +63,7 @@ class ConversionsTest {
         Date date1 = Date.from(localDateTime.toInstant(zoneOffset));
         Date date2 = Date.from(instant);
         Date date3 = Date.from(localDate.atTime(localTime).toInstant(zoneOffset));
-        Date date4 = Date.from(LocalTime.now().atDate(LocalDate.now()).toInstant(zoneOffset));
+        Date date4 = Date.from(localTime.atDate(LocalDate.now()).toInstant(zoneOffset));
 
         assertThat(date1).isEqualTo(date2).isEqualTo(date3).isEqualTo(date4);
     }

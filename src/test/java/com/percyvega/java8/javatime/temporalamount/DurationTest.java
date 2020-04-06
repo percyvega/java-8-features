@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,8 +40,8 @@ public class DurationTest {
         Duration duration1 = Duration.between(localTime1, localTime2);
         Duration duration2 = Duration.between(localTime2, localTime1);
 
-        assertThat(duration1.toMinutes()).isEqualTo(12);
-        assertThat(duration2.toMinutes()).isEqualTo(-12);
+        assertThat(duration1.toMinutes()).isIn(12L, -1428L);
+        assertThat(duration2.toMinutes()).isIn(-12L, 1428L);
     }
 
     @Test
