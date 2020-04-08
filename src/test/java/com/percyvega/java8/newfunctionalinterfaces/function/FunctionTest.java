@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -35,28 +36,53 @@ public class FunctionTest {
 
     @Test
     void toUpperCase() {
-        StudentsListSupplier.get().forEach(student -> {
-            String s = upperCaseFunction1.apply(student.getName()) + ", " +
-                    upperCaseFunction2.apply(student.getName()) + ", " +
-                    upperCaseFunction3.apply(student.getName());
+        List<String> stringList = StudentsListSupplier.get()
+                .stream()
+                .filter(student -> upperCaseFunction1.apply(student.getName()).equals("MATT DAMON"))
+                .map(student ->
+                        upperCaseFunction1.apply(student.getName()) + ", " +
+                                upperCaseFunction2.apply(student.getName()) + ", " +
+                                upperCaseFunction3.apply(student.getName()))
+                .collect(Collectors.toList());
 
-            log.info(s);
-        });
+        assertThat(stringList.size()).isEqualTo(1);
+        assertThat(stringList.get(0)).isEqualTo("MATT DAMON, MATT DAMON, MATT DAMON");
     }
 
     @Test
     void toUpperCase_then_replaceSpacesWithUnderscore() {
-        StudentsListSupplier.get().forEach(student -> log.info(upperCaseFunction3.andThen(replaceSpacesWithUnderscores).apply(student.getName())));
+        List<String> stringList = StudentsListSupplier.get()
+                .stream()
+                .filter(student -> upperCaseFunction1.apply(student.getName()).equals("MATT DAMON"))
+                .map(student -> upperCaseFunction3.andThen(replaceSpacesWithUnderscores).apply(student.getName()))
+                .collect(Collectors.toList());
+
+        assertThat(stringList.size()).isEqualTo(1);
+        assertThat(stringList.get(0)).isEqualTo("MATT_DAMON");
     }
 
     @Test
     void surroundWithTwoSpaces_then_replaceSpacesWithUnderscore() {
-        StudentsListSupplier.get().forEach(student -> log.info(surroundWithTwoSpaces.andThen(replaceSpacesWithUnderscores).apply(student.getName())));
+        List<String> stringList = StudentsListSupplier.get()
+                .stream()
+                .filter(student -> upperCaseFunction1.apply(student.getName()).equals("MATT DAMON"))
+                .map(student -> surroundWithTwoSpaces.andThen(replaceSpacesWithUnderscores).apply(student.getName()))
+                .collect(Collectors.toList());
+
+        assertThat(stringList.size()).isEqualTo(1);
+        assertThat(stringList.get(0)).isEqualTo("__Matt_Damon__");
     }
 
     @Test
     void replaceSpacesWithUnderscore_then_surroundWithTwoSpaces() {
-        StudentsListSupplier.get().forEach(student -> log.info(surroundWithTwoSpaces.compose(replaceSpacesWithUnderscores).apply(student.getName())));
+        List<String> stringList = StudentsListSupplier.get()
+                .stream()
+                .filter(student -> upperCaseFunction1.apply(student.getName()).equals("MATT DAMON"))
+                .map(student -> surroundWithTwoSpaces.compose(replaceSpacesWithUnderscores).apply(student.getName()))
+                .collect(Collectors.toList());
+
+        assertThat(stringList.size()).isEqualTo(1);
+        assertThat(stringList.get(0)).isEqualTo("  Matt_Damon  ");
     }
 
     @Test

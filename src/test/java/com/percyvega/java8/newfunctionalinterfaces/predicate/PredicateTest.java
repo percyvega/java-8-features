@@ -1,22 +1,18 @@
 package com.percyvega.java8.newfunctionalinterfaces.predicate;
 
 import com.percyvega.java8.student.Student;
-import com.percyvega.java8.student.suppliers.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.Predicate;
 
 import static com.percyvega.java8.student.Constants.MALE;
+import static com.percyvega.java8.student.suppliers.StudentsListSupplier.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
 public class PredicateTest {
-
-    private static final List<Integer> leapYears = Arrays.asList(1596, 1600, 2000, 2400);
-    private static final List<Integer> notLeapYears = Arrays.asList(1697, 1698, 1699, 1700, 1800, 1900, 2100, 2200, 2300);
 
     private static final Predicate<Integer> divisibleBy4Predicate = integer -> integer % 4 == 0;
     private static final Predicate<Integer> divisibleBy100Predicate = integer -> integer % 100 == 0;
@@ -47,22 +43,21 @@ public class PredicateTest {
     }
 
     @Test
-    void isLeapYearTest() {
-        leapYears.forEach(integer -> {
+    void isLeapYear_Test() {
+        Arrays.asList(1596, 1600, 2000, 2400).forEach(integer -> {
             assertThat(isLeapYear.test(integer)).isTrue();
         });
-        notLeapYears.forEach(integer -> {
+        Arrays.asList(1697, 1698, 1699, 1700, 1800, 1900, 2100, 2200, 2300).forEach(integer -> {
             assertThat(isLeapYear.test(integer)).isFalse();
         });
     }
 
     @Test
     void gpa4MaleStudentPredicateTest() {
-        StudentsListSupplier.get().forEach(student -> {
-            if (gpaGt35MaleStudentPredicate.test(student)) {
-                log.info(student);
-            }
-        });
+        assertThat(gpaGt35MaleStudentPredicate.test(MATT)).isTrue();
+        assertThat(gpaGt35MaleStudentPredicate.test(EMMA)).isFalse();
+        assertThat(gpaGt35MaleStudentPredicate.test(BRAD)).isTrue();
+        assertThat(gpaGt35MaleStudentPredicate.test(MERYL)).isFalse();
     }
 
 }
