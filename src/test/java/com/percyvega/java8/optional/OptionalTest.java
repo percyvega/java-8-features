@@ -8,21 +8,32 @@ import org.junit.jupiter.api.Test;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 @Log4j2
 public class OptionalTest {
 
     @Test
     void test() {
-        final String PERCY = "Percy";
+        Optional<String> optional1 = Optional.of("Percy");
+        assertThat(optional1.isPresent()).isTrue();
+        assertThat(optional1.get()).isEqualTo("Percy");
+        assertThat(optional1.orElse("fallback")).isEqualTo("Percy");
+        optional1.ifPresent(s -> assertThat(s).isEqualTo("Percy"));
 
-        Optional<String> optional = Optional.of(PERCY);
+        Optional<Object> optional2 = Optional.empty();
+        assertThat(optional2.isPresent()).isFalse();
+//        assertThat(optional2.get()).isNull(); java.util.NoSuchElementException: No value present
+        assertThat(optional2.orElse("fallback")).isEqualTo("fallback");
+        optional2.ifPresent(s -> fail("Not reached"));
 
-        assertThat(optional.isPresent()).isTrue();
-        assertThat(optional.get()).isEqualTo(PERCY);
-        assertThat(optional.orElse("fallback")).isEqualTo(PERCY);
+//        Optional<Object> optional3 = Optional.of(null); java.lang.NullPointerException
 
-        optional.ifPresent(s -> assertThat(s.charAt(0)).isEqualTo('P'));
+        Optional<Object> optional4 = Optional.ofNullable(null);
+        assertThat(optional4.isPresent()).isFalse();
+//        assertThat(optional4.get()).isNull(); java.util.NoSuchElementException: No value present
+        assertThat(optional4.orElse("fallback")).isEqualTo("fallback");
+        optional4.ifPresent(s -> fail("Not reached"));
     }
 
     @Test
@@ -42,7 +53,7 @@ public class OptionalTest {
     }
 
     @Test
-    void orElse() {
+    void optionalMapOrElse() {
         for (int i = 0; i < 20; i++) {
             Optional<Student> o = OptionalStudentSupplier.get();
             log.info(o.map(Student::getName).orElse("-"));
@@ -69,7 +80,7 @@ public class OptionalTest {
                 log.info(s);
                 assertThat(o).isPresent();
             } catch (RuntimeException e) {
-                log.info(o);
+                log.info(e.getMessage() + " " + o);
                 assertThat(o).isEmpty();
             }
         }

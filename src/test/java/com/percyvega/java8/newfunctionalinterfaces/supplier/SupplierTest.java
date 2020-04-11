@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Random;
 import java.util.function.Supplier;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Log4j2
 public class SupplierTest {
 
@@ -15,8 +17,7 @@ public class SupplierTest {
 
     @Test
     void test_supplier() {
-        for (int i = 0; i < 20; i++) {
-            log.info(randomStudentSupplier.get());
-        }
+        assertThat(StudentsListSupplier.get()).contains(randomStudentSupplier.get());
     }
+
 }

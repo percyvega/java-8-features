@@ -28,8 +28,15 @@ public class MapTest {
         for (int i = 0; i < 10; i++) {
             map.putIfAbsent(i, "val" + i);
         }
+        for (int i = 0; i < 10; i++) {
+            map.putIfAbsent(i, "prefix" + i);
+        }
 
-        map.forEach((id, val) -> System.out.println(val));
+        assertThat(map.size()).isEqualTo(10);
+        map.forEach((id, val) -> {
+            assertThat(id).isLessThan(10);
+            assertThat(val).isEqualTo("val" + id);
+        });
     }
 
     @Test
@@ -63,6 +70,7 @@ public class MapTest {
             entered1.set(true);
             return null;
         });
+        assertThat(map.get(1)).isNull();
         assertThat(entered1).isTrue();
     }
 

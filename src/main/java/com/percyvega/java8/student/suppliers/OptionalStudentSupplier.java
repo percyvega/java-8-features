@@ -15,13 +15,13 @@ public class OptionalStudentSupplier {
 
     public static Optional<Student> get() {
         if (System.nanoTime() % 3 == 0) {
-            log.info("Case #1");
+            log.info("Case #1 - Always an actual Student");
             return Optional.of(getRandomStudent());
         } else if (System.nanoTime() % 2 == 0) {
-            log.info("Case #2");
+            log.info("Case #2 - Either an actual Student or a null");
             return Optional.ofNullable(getRandomStudentOrSometimesANull());
         } else {
-            log.info("Case #3");
+            log.info("Case #3 - Always an empty optional");
             return Optional.empty();
         }
     }
