@@ -1,9 +1,6 @@
 package com.percyvega.java8.repeatingannotations;
 
-import com.percyvega.java8.repeatingannotations.model.Color;
-import com.percyvega.java8.repeatingannotations.model.Colors;
-import com.percyvega.java8.repeatingannotations.model.Pants;
-import com.percyvega.java8.repeatingannotations.model.Shirt;
+import com.percyvega.java8.repeatingannotations.model.*;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 
@@ -38,5 +35,19 @@ class App {
         assertThat(colorArray[0].name()).isEqualTo("red");
         assertThat(colorArray[1].name()).isEqualTo("blue");
         assertThat(colorArray[2].name()).isEqualTo("green");
+    }
+
+    @Test
+    void testGetAnnotationsByType_when_array() {
+        Color color = TShirt.class.getAnnotation(Color.class);
+        assertThat(color).isNull();
+
+        Colors colors = TShirt.class.getAnnotation(Colors.class);
+        assertThat(colors.value().length).isEqualTo(2);
+
+        Color[] colorArray = TShirt.class.getAnnotationsByType(Color.class);
+        assertThat(colorArray.length).isEqualTo(2);
+        assertThat(colorArray[0].name()).isEqualTo("red");
+        assertThat(colorArray[1].name()).isEqualTo("blue");
     }
 }

@@ -18,7 +18,7 @@ class DistinctTest {
                 .distinct()
                 .collect(Collectors.toList());
 
-        assertThat(integerList).containsExactlyInAnyOrder(2, 8, 4, 6, 7, 9);
+        assertThat(integerList).containsExactly(2, 8, 4, 6, 7, 9);
     }
 
 }
