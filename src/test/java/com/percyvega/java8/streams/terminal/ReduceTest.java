@@ -3,12 +3,16 @@ package com.percyvega.java8.streams.terminal;
 import com.percyvega.java8.student.Student;
 import com.percyvega.java8.student.suppliers.StudentsListSupplier;
 import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.util.PropertySource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

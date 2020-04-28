@@ -22,7 +22,7 @@ public class FilterTest {
                 .filter(student -> MALE.equals(student.getGender()))
                 .collect(Collectors.toMap(Student::getName, Student::getActivities));
 
-        studentNameAndActivities.forEach((s, activities) -> log.info(s + ": " + activities));
+        studentNameAndActivities.forEach((name, activities) -> log.info(name + ": " + activities));
     }
 
 }

@@ -10,7 +10,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Log4j2
-public class FindTest {
+public class FindAnyAndFindFirstTest {
 
     @Test
     void findAny() {

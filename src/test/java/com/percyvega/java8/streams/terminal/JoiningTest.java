@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Log4j2
 public class JoiningTest {
 
@@ -20,7 +22,7 @@ public class JoiningTest {
                 .sorted()
                 .collect(Collectors.joining());
 
-        log.info(joined);
+        assertThat(joined).isEqualTo("aerobicsbaseballbasketballdancingfootballgymnasticssoccerswimmingvolleyball");
     }
 
     @Test
@@ -32,7 +34,7 @@ public class JoiningTest {
                 .sorted()
                 .collect(Collectors.joining(", "));
 
-        log.info(joined);
+        assertThat(joined).isEqualTo("aerobics, baseball, basketball, dancing, football, gymnastics, soccer, swimming, volleyball");
     }
 
     @Test
@@ -44,7 +46,7 @@ public class JoiningTest {
                 .sorted()
                 .collect(Collectors.joining(", ", "All activities: ", "."));
 
-        log.info(joined);
+        assertThat(joined).isEqualTo("All activities: aerobics, baseball, basketball, dancing, football, gymnastics, soccer, swimming, volleyball.");
     }
 
 }

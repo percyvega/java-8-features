@@ -10,6 +10,8 @@ import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @Log4j2
 public class MapTest {
 
@@ -25,12 +27,16 @@ public class MapTest {
 
     @Test
     void test_mapToDouble_toSet() {
-        Set<Double> namesSet = StudentsListSupplier.get().stream()
+        Set<Double> gpaSet1 = StudentsListSupplier.get().stream()
                 .mapToDouble(Student::getGpa)
                 .boxed()
                 .collect(Collectors.toSet());
 
-        namesSet.forEach(log::info);
+        Set<Double> gpaSet2 = StudentsListSupplier.get().stream()
+                .map(Student::getGpa)
+                .collect(Collectors.toSet());
+
+        assertThat(gpaSet1).isEqualTo(gpaSet2);
     }
 
     @Test
