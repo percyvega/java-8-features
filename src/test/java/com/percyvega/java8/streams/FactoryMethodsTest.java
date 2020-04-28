@@ -27,7 +27,7 @@ public class FactoryMethodsTest {
 
     @Test
     void generate() {
-        Supplier<Long> longSupplier = System::currentTimeMillis;
+        Supplier<Long> longSupplier = System::nanoTime;
         Stream.generate(longSupplier)
                 .limit(10)
                 .forEach(log::info);

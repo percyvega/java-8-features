@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,19 +34,28 @@ public class MinByAndMaxByTest {
 
     @Test
     void max_without_collect() {
-        Optional<Double> optionalDouble = StudentsListSupplier.get().stream()
-                .map(Student::getGpa)
-                .max(Double::compare);
+        Optional<Integer> optionalInteger = StudentsListSupplier.get().stream()
+                .map(Student::getNoteBooks)
+                .max(Integer::compare);
 
-        assertThat(optionalDouble.get()).isEqualTo(4d);
+        OptionalInt optionalInt = StudentsListSupplier.get().stream()
+                .mapToInt(Student::getNoteBooks)
+                .max();
+
+        assertThat(optionalInteger.get()).isEqualTo(optionalInt.getAsInt());
+        assertThat(optionalInteger.get()).isEqualTo(22);
     }
 
     @Test
     void maxBy() {
-        Optional<Student> optionalStudent = StudentsListSupplier.get().stream()
-                .collect(Collectors.maxBy(Comparator.comparing(Student::getGpa)));
+        Optional<Student> optionalStudent1 = StudentsListSupplier.get().stream()
+                .collect(Collectors.maxBy(Comparator.comparing(Student::getNoteBooks)));
 
-        assertThat(optionalStudent.get().getName()).isEqualTo("Emma Thompson");
+        Optional<Student> optionalStudent2 = StudentsListSupplier.get().stream()
+                .collect(Collectors.maxBy(Comparator.comparingInt(Student::getNoteBooks)));
+
+        assertThat(optionalStudent1).isEqualTo(optionalStudent2);
+        assertThat(optionalStudent2.get().getNoteBooks()).isEqualTo(22);
     }
 
 }
